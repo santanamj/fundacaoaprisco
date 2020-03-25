@@ -1,3 +1,12 @@
+# Informações do projeto
+Projeto desenvolvido para ajudar no envio de prestação de contas da fudação Aprisco.
+
+Caso tenha problema no login remover os seguintes dados no module.ts: {
+    provide: HTTP_INTERCEPTORS,
+    useClass: AuthInterceptor,
+    multi: true
+  }.
+
 # Fundacao
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.2.
