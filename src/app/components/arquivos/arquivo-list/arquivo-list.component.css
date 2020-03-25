@@ -1,0 +1,15 @@
+.header-arquivo{
+  display: table;
+  margin: 0 auto;
+}
+.titulo-criar{
+ 
+  display: inline-block;
+}
+.criar{
+  max-width: 200px;
+  display: inline;
+}
+.button-download{
+  display: inline-block;
+}

@@ -1,0 +1,33 @@
+
+<mat-card>
+  <h3>Novo Arquivo</h3>
+  <mat-card-content>
+<form [formGroup]="form" name="createArquivo" (submit)="arquivoSubmit()">
+  <mat-form-field appearance="outline" floatLabel="always" color="primary">
+    <mat-label>Título</mat-label>
+    <input matInput type="text" name="title" formControlName="title"  class="form-control">
+  </mat-form-field>
+  <br>
+ 
+  <mat-form-field appearance="outline" floatLabel="always" color="primary">
+    <mat-label>Data referente ao mês/ano. Ex:10/2020</mat-label>
+    <input matInput type="text" name="dataArquivo" formControlName="dataArquivo" class="form-control">
+  </mat-form-field>
+  <br>
+  <div class="upload-btn-wrapper">
+    <button class="btn">Upload a file</button>
+    <input id="files" #myInput name="files" type="file" #files (change)="fileChangeEvent($event)" placeholder="Upload a file..." required  />
+  </div>
+ 
+  <div class="btn-wrapper">
+  <button  mat-raised-button color="accent"  type="submit" [disabled]="!form.valid">Enviar</button>
+</div>
+</form>
+</mat-card-content>
+<mat-card-actions>
+<div class="loading" *ngIf="load == true">
+  <h3>Enviando</h3>
+  <mat-spinner></mat-spinner>
+</div>
+</mat-card-actions>
+</mat-card>

@@ -1,0 +1,26 @@
+<div class="header-arquivo">
+ <ul class="titulo-criar">
+  <h1>Prestação contas</h1>
+ </ul>
+ <ul class="titulo-criar">
+  <a mat-raised-button color="primary" [routerLink]="['/criar-arquivo']" routerLinkActive="router-link-active"  >Adicionar nova</a>
+</ul>
+  </div>
+
+ 
+<mat-card class="example-card" *ngFor="let arquivo of arquivos">
+  <mat-card-header>
+    <div mat-card-avatar class="example-header-image"></div>
+    <mat-card-title>{{arquivo.title}}</mat-card-title>
+    <mat-card-subtitle>{{arquivo.dataArquivo}}</mat-card-subtitle>
+    <div class="button-download">
+      <p mat-line> <a mat-raised-button color="accent" href="{{arquivo.url[0].secure_url}}" target="_blank">Download </a></p>
+    </div>
+  </mat-card-header>
+ 
+
+  
+  
+    
+  <mat-divider></mat-divider>
+</mat-card>
