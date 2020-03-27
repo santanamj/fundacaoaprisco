@@ -1,0 +1,153 @@
+<p>
+  Cadastro de usuário
+</p>
+<form [formGroup]="form" (submit)="registroSubmit()">
+  <div class="container">
+    <div class="row">
+
+      <div class="col-sm">
+  <div class="md-form" >
+    <input mdbInput type="text" class="form-control" formControlName="nome" name="nome" placeholder="Nome">
+  </div>
+</div>
+<div class="col-sm">  
+  <div class="md-form">
+    <input mdbInput type="text" class="form-control" formControlName="email" name="email" placeholder="E-mail">
+  </div>
+</div>
+<div class="col-sm">  
+  <div class="md-form">
+    <input mdbInput type="text" [textMask]="{mask: mask}" class="form-control" formControlName="telefone" name="telefone" placeholder="Telefone">
+  </div></div>
+    </div>
+    <div class="row">
+  <div class="col-sm"> 
+     
+  <div class="md-form">
+    <input mdbInput type="text" [textMask]="{mask: maskcel}" class="form-control" formControlName="celular"  placeholder="Celular">
+  </div></div>
+  <div class="col-sm"> 
+  <div class="md-form">
+    <input mdbInput type="text" [textMask]="{mask: maskcpf}" class="form-control" formControlName="CPF"placeholder="CPF">
+  </div>
+    </div>
+    <div class="col-sm"> 
+    <div class="md-form">
+      <input mdbInput type="text" class="form-control" formControlName="RG" name="rg" placeholder="Número de Identidade">
+    </div></div>
+  </div>
+   
+ 
+  <div class="row">
+  <div class="col-sm">  
+  <div class="md-form" >
+    <select class="browser-default custom-select" formControlName="codgru" name="grupo">
+      <option value="" disabled selected>Grupo</option>
+      <option [value]="cod" *ngFor="let grupo of Listgrupos"> {{grupo.serie}}</option>
+    </select>
+  </div></div>
+  <div class="col-sm">  
+  <div class="md-form">
+    <select class="browser-default custom-select" formControlName="sexo" name="sexo">
+      <option value="" disabled selected>Sexo</option>
+      <option value="masculino">Masculino</option>
+      <option value="feminimo">Feminino</option>
+      <option value="neutro">Neutro</option>
+    </select>
+  </div></div></div>
+  <div class="row">
+  <div class="col-sm">  
+    <label>Data de Nascimento</label>
+  <div class="md-form">
+    <my-date-picker type="date"  [options]="myDatePickerOptions"
+                    formControlName="datnsc" placeholder="Data de nascimento" ></my-date-picker>
+  </div></div>
+  <div class="col-sm">  
+    <label>Data de Aquisição</label>
+  <div class="md-form" >
+    
+    <my-date-picker type="date"  [options]="myDatePickerOptions"
+    formControlName="dtaquisicao" placeholder="Data de Aquisição" ></my-date-picker>
+  </div></div>
+  <div class="col-sm">  
+    <label>Primeiro Vencimento</label>
+  <div class="md-form">
+    <my-date-picker type="date"  [options]="myDatePickerOptions"
+    formControlName="privenc" placeholder="Primeiro Vencimento" ></my-date-picker>
+  </div></div>
+</div>
+<div class="row">
+  <div class="col-sm">  
+    <div class="md-form">
+ 
+    
+    <select class="browser-default custom-select" formControlName="vendedor" name="vendedor">
+       <option [value]="codvnd" *ngFor="let vendedor of vendedores"> {{vendedor.nome}}</option>
+    </select>
+  </div></div>
+ 
+  <div class="col-sm">  
+  <div class="md-form">
+    <select class="browser-default custom-select" formControlName="status" name="status" >
+      <option value="" disabled selected>Status</option>
+      <option value="ativo">Ativo</option>
+      <option value="inativo">Inativo</option>
+      <option value="cancelado">Cancelado</option>
+      <option value="outro">Outro</option>
+    </select>
+  </div></div> </div>
+  <div class="row">
+  <div class="col-sm">  
+  <div class="md-form">
+    <textarea class="md-textarea form-control" mdbInput formControlName="observacao" name="observacao" placeholder="Oberservação"></textarea>
+  </div></div>
+</div>
+<div formGroupName="endereco">
+  <div class="row">
+   
+   <div class="col-sm"> 
+  <div class="md-form">
+     <input mdbinput type="text" class="form-control" formControlName="cep" id="cep"
+     (blur)="consultaCEP($event.target.value)" placeholder="CEP">
+     <app-error-msg [control]="form.get('endereco.cep')" label="CEP"></app-error-msg>
+   
+   </div>
+   </div>
+   <div class="col-sm"> 
+  <div class="md-form" >
+     <input mdbinput type="text" class="form-control" formControlName="estado" name="estado" placeholder="Estado">
+   </div>
+  </div>
+  <div class="col-sm"> 
+   <div class="md-form" >
+      <input mdbinput type="text" class="form-control" formControlName="complemento" name="complemento" placeholder="complemento">
+    </div>
+   </div>
+  </div>
+  <div class="row">
+   <div class="col-sm"> 
+     <div class="md-form" >
+        <input mdbinput type="text" class="form-control" formControlName="rua" name="rua" placeholder="rua">
+      </div>
+     </div>
+     <div class="col-sm"> 
+       <div class="md-form" >
+          <input mdbinput type="text" class="form-control" formControlName="bairro" name="bairro" placeholder="bairro">
+        </div>
+       </div>
+       <div class="col-sm"> 
+         <div class="md-form" >
+            <input mdbinput type="text" class="form-control" formControlName="cidade" name="cidade" placeholder="cidade">
+          </div>
+         </div>
+         <div class="col-sm"> 
+           <div class="md-form" >
+              <input mdbinput type="text" class="form-control" formControlName="numero" name="numero" placeholder="Número">
+            </div>
+           </div>
+  </div>
+ </div>
+</div>
+
+<button type="submit" name="button" mdbBtn color="info" mdbWavesEffect>Criar novo Associado</button>
+</form>
